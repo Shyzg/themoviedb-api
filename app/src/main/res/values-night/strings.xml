@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_api_main">API</string>
+    <string name="tv_title_main">Title</string>
+    <string name="tie_movieid_main">Movie ID</string>
+    <string name="test">Movie ID Tidak Dapat Ditemukan!</string>
+    <string name="overview_card_now_playing">Overview</string>
+    <string name="title_card_now_playing">Title</string>
+    <string name="poster_card_now_playing">Poster Card Now Playing</string>
+    <string name="release_date_card_now_playing">Release Date</string>
+    <string name="genre_card_now_playing">Genre</string>
+    <string name="rating_card_now_playing">Rating</string>
+    <string name="details_movie_details">Details</string>
+    <string name="tv_duration_movie_details">Duration</string>
+    <string name="tv_rating_movie_details">Rating</string>
+    <string name="iv_poster_movie_details">Poster</string>
+    <string name="tv_synopsis_movie_details">Synopsis</string>
+    <string name="iv_back_movie_details">Back</string>
+</resources>
