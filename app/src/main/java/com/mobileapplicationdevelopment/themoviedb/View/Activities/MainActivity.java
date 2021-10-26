@@ -1,7 +1,6 @@
-package com.mobileapplicationdevelopment.themoviedb.View;
+package com.mobileapplicationdevelopment.themoviedb.View.Activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobileapplicationdevelopment.themoviedb.Model.Movies;
+import com.mobileapplicationdevelopment.themoviedb.R;
 import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
 
-import themoviedb.R;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private MovieViewModel movieViewModel;
-    private Button buttonAPI;
     private TextView tvTitle;
     private TextInputLayout tilMovieId;
     private ImageView ivPoster;
@@ -34,23 +33,20 @@ public class MainActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.tv_title_main);
         tilMovieId = findViewById(R.id.til_movieid_main);
         ivPoster = findViewById(R.id.iv_poster_main);
-        buttonAPI = findViewById(R.id.button_api_main);
-        buttonAPI.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String movieId = tilMovieId.getEditText().getText().toString().trim();
-                if (movieId.isEmpty()) {
-                    tilMovieId.setError("Tidak Boleh Kosong!");
-                } else {
-                    tilMovieId.setError(null);
-                    movieViewModel.getMovieById(movieId);
-                    movieViewModel.getResultGetMovieById().observe(MainActivity.this, showResultMovie);
-                }
+        Button buttonAPI = findViewById(R.id.button_api_main);
+        buttonAPI.setOnClickListener(view -> {
+            String movieId = Objects.requireNonNull(tilMovieId.getEditText()).getText().toString().trim();
+            if (movieId.isEmpty()) {
+                tilMovieId.setError("Tidak Boleh Kosong!");
+            } else {
+                tilMovieId.setError(null);
+                movieViewModel.getMovieById(movieId);
+                movieViewModel.getResultGetMovieById().observe(MainActivity.this, showResultMovie);
             }
         });
     }
 
-    private Observer<Movies> showResultMovie = new Observer<Movies>() {
+    private final Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
             if (movies == null) {

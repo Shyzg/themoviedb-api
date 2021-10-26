@@ -1,4 +1,4 @@
-package com.mobileapplicationdevelopment.themoviedb.View;
+package com.mobileapplicationdevelopment.themoviedb.View.Activities;
 
 import android.os.Bundle;
 
@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobileapplicationdevelopment.themoviedb.Adapter.NowPlayingAdapter;
 import com.mobileapplicationdevelopment.themoviedb.Model.NowPlayingModel;
+import com.mobileapplicationdevelopment.themoviedb.R;
 import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
-
-import themoviedb.R;
 
 public class NowPlayingActivity extends AppCompatActivity {
     private RecyclerView rv_now_playing;

@@ -1,4 +1,4 @@
-package com.mobileapplicationdevelopment.themoviedb.View;
+package com.mobileapplicationdevelopment.themoviedb.View.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
 import com.mobileapplicationdevelopment.themoviedb.Model.Movies;
+import com.mobileapplicationdevelopment.themoviedb.R;
 import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import themoviedb.R;
+import java.util.Objects;
 
 public class MovieDetailsActivity extends AppCompatActivity {
     @Override
@@ -42,35 +42,32 @@ public class MovieDetailsActivity extends AppCompatActivity {
         tv_rating.setText(rating);
     }
 
-    private final Observer<Movies> showMoviesResult = new Observer<Movies>() {
-        @Override
-        public void onChanged(Movies movies) {
-            ImageView iv_backdrop = findViewById(R.id.iv_backdop_movie_details);
-            TextView tv_genre = findViewById(R.id.tv_genre_movie_details);
-            TextView tv_duration = findViewById(R.id.tv_duration_movie_details);
-            TextView tv_synopsis = findViewById(R.id.tv_synopsis_movie_details);
+    private final Observer<Movies> showMoviesResult = movies -> {
+        ImageView iv_backdrop = findViewById(R.id.iv_backdop_movie_details);
+        TextView tv_genre = findViewById(R.id.tv_genre_movie_details);
+        TextView tv_duration = findViewById(R.id.tv_duration_movie_details);
+        TextView tv_synopsis = findViewById(R.id.tv_synopsis_movie_details);
 
-            SimpleDateFormat timeFormatter = new SimpleDateFormat("h'h' m'm'");
-            SimpleDateFormat timeFormat = new SimpleDateFormat("m");
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("h'h' m'm'");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("m");
 
-            StringBuilder genre = new StringBuilder();
-            for (int i = 0; i < movies.getGenres().size(); i++) {
-                if (i == movies.getGenres().size() - 1) {
-                    genre.append(movies.getGenres().get(i).getName());
-                } else {
-                    genre.append(movies.getGenres().get(i).getName()).append("\n");
-                }
+        StringBuilder genre = new StringBuilder();
+        for (int i = 0; i < movies.getGenres().size(); i++) {
+            if (i == movies.getGenres().size() - 1) {
+                genre.append(movies.getGenres().get(i).getName());
+            } else {
+                genre.append(movies.getGenres().get(i).getName()).append("\n");
             }
-
-            tv_genre.setText(genre);
-            try {
-                tv_duration.setText(timeFormatter.format(timeFormat.parse(String.valueOf(movies.getRuntime()))));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            Glide.with(MovieDetailsActivity.this).load(Const.IMG_URL + movies.getPoster_path()).into(iv_backdrop);
-            tv_synopsis.setText(movies.getOverview());
         }
+
+        tv_genre.setText(genre);
+        try {
+            tv_duration.setText(timeFormatter.format(Objects.requireNonNull(timeFormat.parse(String.valueOf(movies.getRuntime())))));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Glide.with(MovieDetailsActivity.this).load(Const.IMG_URL + movies.getPoster_path()).into(iv_backdrop);
+        tv_synopsis.setText(movies.getOverview());
     };
 
     @Override

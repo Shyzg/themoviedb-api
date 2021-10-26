@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "mad-themovie-api"
+rootProject.name = "mad-themoviedb-api"

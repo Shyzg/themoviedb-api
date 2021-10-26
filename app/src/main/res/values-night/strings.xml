@@ -16,4 +16,6 @@
     <string name="iv_poster_movie_details">Poster</string>
     <string name="tv_synopsis_movie_details">Synopsis</string>
     <string name="iv_back_movie_details">Back</string>
+    <string name="tv_fragment_upcoming">Upcoming</string>
+    <string name="tv_fragment_now_playing">Now Playing</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nowPlayingFragment"
+        android:icon="@drawable/ic_now_playing_24"
+        android:title="@string/tv_fragment_now_playing" />
+    <item
+        android:id="@+id/upcomingFragment"
+        android:icon="@drawable/ic_upcoming_24"
+        android:title="@string/tv_fragment_upcoming" />
+</menu>

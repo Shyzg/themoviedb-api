@@ -1,7 +1,6 @@
 package com.mobileapplicationdevelopment.themoviedb.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
 import com.mobileapplicationdevelopment.themoviedb.Model.NowPlayingModel;
-import com.mobileapplicationdevelopment.themoviedb.View.MovieDetailsActivity;
+import com.mobileapplicationdevelopment.themoviedb.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
-
-import themoviedb.R;
 
 public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.CardViewViewHolder> {
     private final Context context;
@@ -55,21 +52,24 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        holder.cv.setOnClickListener(view -> {
-            Intent intent = new Intent(context, MovieDetailsActivity.class);
-
-            intent.putExtra("movie_id", String.valueOf(results.getId()));
-            intent.putExtra("title", results.getTitle());
-            intent.putExtra("rating", String.valueOf(results.getVote_average()));
-
-            try {
-                intent.putExtra("releasedate", formatter.format(Objects.requireNonNull(dateFormat.parse(results.getRelease_date()))));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            context.startActivity(intent);
-        });
+//        holder.cv.setOnClickListener(view -> {
+//            Intent intent = new Intent(context, MovieDetailsActivity.class);
+//
+//            intent.putExtra("movie_id", String.valueOf(results.getId()));
+//            intent.putExtra("title", results.getTitle());
+//            intent.putExtra("rating", String.valueOf(results.getVote_average()));
+//
+//            try {
+//                intent.putExtra("releasedate", formatter.format(Objects.requireNonNull(dateFormat.parse(results.getRelease_date()))));
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//
+//            context.startActivity(intent);
+//            Bundle bundle = new Bundle();
+//            bundle.putString("movie_id", String.valueOf(results.getId()));
+//            Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+//        });
 
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.ivPoster);
 

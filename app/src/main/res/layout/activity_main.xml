@@ -5,7 +5,7 @@
     android:id="@+id/constraint_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    tools:context=".View.Activities.MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_movieid_main"
@@ -73,6 +73,7 @@
         android:layout_width="256dp"
         android:layout_height="256dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/iv_poster_movie_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_main" />
