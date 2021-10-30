@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/nowPlayingFragment"
-        android:icon="@drawable/ic_now_playing_24"
+        android:icon="@drawable/popcorn"
         android:title="@string/tv_fragment_now_playing" />
     <item
         android:id="@+id/upcomingFragment"
-        android:icon="@drawable/ic_upcoming_24"
+        android:icon="@drawable/calendar_range"
         android:title="@string/tv_fragment_upcoming" />
 </menu>

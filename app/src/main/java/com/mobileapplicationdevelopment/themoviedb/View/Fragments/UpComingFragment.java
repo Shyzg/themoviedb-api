@@ -12,9 +12,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobileapplicationdevelopment.themoviedb.Adapter.UpComingAdapter;
+import com.mobileapplicationdevelopment.themoviedb.Adapter.UpcomingAdapter;
 import com.mobileapplicationdevelopment.themoviedb.Helper.ItemClickSupport;
-import com.mobileapplicationdevelopment.themoviedb.Model.UpComing;
+import com.mobileapplicationdevelopment.themoviedb.Model.UpcomingModel;
 import com.mobileapplicationdevelopment.themoviedb.R;
 import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
 
@@ -65,15 +65,15 @@ public class UpComingFragment extends Fragment {
         }
     }
 
-    private RecyclerView rv_now_playing;
+    private RecyclerView rv_up_coming;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_now_playing, container, false);
-        View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
-        rv_now_playing = view.findViewById(R.id.rv_fragment_now_playing);
+        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
+        rv_up_coming = view.findViewById(R.id.rv_fragment_up_coming);
         MovieViewModel movieViewModel = new ViewModelProvider(requireActivity()).get(MovieViewModel.class);
         movieViewModel.getUpComing();
         movieViewModel.getResultGetUpComing().observe(requireActivity(), showUpComing);
@@ -81,26 +81,18 @@ public class UpComingFragment extends Fragment {
         return view;
     }
 
-    private final Observer<UpComing> showUpComing = new Observer<UpComing>() {
+    private final Observer<UpcomingModel> showUpComing = new Observer<UpcomingModel>() {
         @Override
-        public void onChanged(UpComing upComing) {
-            rv_now_playing.setLayoutManager(new LinearLayoutManager(getActivity()));
-            UpComingAdapter adapter = new UpComingAdapter(getActivity());
-            adapter.setListUpComing(upComing.getResults());
-            rv_now_playing.setAdapter(adapter);
-            ItemClickSupport.addTo(rv_now_playing).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
-                    return false;
-                }
-            });
-            ItemClickSupport.addTo(rv_now_playing).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-                @Override
-                public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("movie_id", String.valueOf(upComing.getResults().get(position).getId()));
-                    Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
-                }
+        public void onChanged(UpcomingModel upcomingModel) {
+            rv_up_coming.setLayoutManager(new LinearLayoutManager(getActivity()));
+            UpcomingAdapter adapter = new UpcomingAdapter(getActivity());
+            adapter.setListUpComing(upcomingModel.getResults());
+            rv_up_coming.setAdapter(adapter);
+            ItemClickSupport.addTo(rv_up_coming).setOnItemLongClickListener((recyclerView, position, v) -> false);
+            ItemClickSupport.addTo(rv_up_coming).setOnItemClickListener((recyclerView, position, v) -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("movie_id", String.valueOf(upcomingModel.getResults().get(position).getId()));
+                Navigation.findNavController(v).navigate(R.id.action_upcomingFragment_to_movieDetailsFragment, bundle);
             });
         }
     };

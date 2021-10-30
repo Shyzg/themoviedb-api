@@ -7,10 +7,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class Movies implements Parcelable {
-    public Movies() {
-    }
-
+public class MoviesModel implements Parcelable {
     private boolean adult;
     private String backdrop_path;
     private Object belongs_to_collection;
@@ -23,7 +20,7 @@ public class Movies implements Parcelable {
     private String original_title;
     private String overview;
     private double popularity;
-    private Object poster_path;
+    private String poster_path;
     private List<ProductionCompanies> production_companies;
     private List<ProductionCountries> production_countries;
     private String release_date;
@@ -37,43 +34,33 @@ public class Movies implements Parcelable {
     private double vote_average;
     private int vote_count;
 
-    protected Movies(Parcel in) {
-        adult = in.readByte() != 0;
-        backdrop_path = in.readString();
-        budget = in.readInt();
-        homepage = in.readString();
-        id = in.readInt();
-        imdb_id = in.readString();
-        original_language = in.readString();
-        original_title = in.readString();
-        overview = in.readString();
-        popularity = in.readDouble();
-        release_date = in.readString();
-        revenue = in.readInt();
-        runtime = in.readInt();
-        status = in.readString();
-        tagline = in.readString();
-        title = in.readString();
-        video = in.readByte() != 0;
-        vote_average = in.readDouble();
-        vote_count = in.readInt();
+    protected MoviesModel(Parcel in) {
     }
 
-    public static final Creator<Movies> CREATOR = new Creator<Movies>() {
+    public static final Creator<MoviesModel> CREATOR = new Creator<MoviesModel>() {
         @Override
-        public Movies createFromParcel(Parcel in) {
-            return new Movies(in);
+        public MoviesModel createFromParcel(Parcel in) {
+            return new MoviesModel(in);
         }
 
         @Override
-        public Movies[] newArray(int size) {
-            return new Movies[size];
+        public MoviesModel[] newArray(int size) {
+            return new MoviesModel[size];
         }
     };
 
-    public static Movies objectFromData(String str) {
+    public static MoviesModel objectFromData(String str) {
 
-        return new Gson().fromJson(str, Movies.class);
+        return new Gson().fromJson(str, MoviesModel.class);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
     }
 
     public boolean isAdult() {
@@ -172,11 +159,11 @@ public class Movies implements Parcelable {
         this.popularity = popularity;
     }
 
-    public Object getPoster_path() {
+    public String getPoster_path() {
         return poster_path;
     }
 
-    public void setPoster_path(Object poster_path) {
+    public void setPoster_path(String poster_path) {
         this.poster_path = poster_path;
     }
 
@@ -276,34 +263,6 @@ public class Movies implements Parcelable {
         this.vote_count = vote_count;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeByte((byte) (adult ? 1 : 0));
-        parcel.writeString(backdrop_path);
-        parcel.writeInt(budget);
-        parcel.writeString(homepage);
-        parcel.writeInt(id);
-        parcel.writeString(imdb_id);
-        parcel.writeString(original_language);
-        parcel.writeString(original_title);
-        parcel.writeString(overview);
-        parcel.writeDouble(popularity);
-        parcel.writeString(release_date);
-        parcel.writeInt(revenue);
-        parcel.writeInt(runtime);
-        parcel.writeString(status);
-        parcel.writeString(tagline);
-        parcel.writeString(title);
-        parcel.writeByte((byte) (video ? 1 : 0));
-        parcel.writeDouble(vote_average);
-        parcel.writeInt(vote_count);
-    }
-
     public static class Genres {
         private int id;
         private String name;
@@ -401,12 +360,21 @@ public class Movies implements Parcelable {
     }
 
     public static class SpokenLanguages {
+        private String english_name;
         private String iso_639_1;
         private String name;
 
         public static SpokenLanguages objectFromData(String str) {
 
             return new Gson().fromJson(str, SpokenLanguages.class);
+        }
+
+        public String getEnglish_name() {
+            return english_name;
+        }
+
+        public void setEnglish_name(String english_name) {
+            this.english_name = english_name;
         }
 
         public String getIso_639_1() {

@@ -1,19 +1,54 @@
 package com.mobileapplicationdevelopment.themoviedb.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.Gson;
 
 import java.util.List;
 
-public class NowPlayingModel {
+public class NowPlayingModel implements Parcelable {
+    private Dates dates;
     private int page;
     private List<Results> results;
-    private Dates dates;
     private int total_pages;
     private int total_results;
+
+    protected NowPlayingModel(Parcel in) {
+    }
+
+    public static final Creator<NowPlayingModel> CREATOR = new Creator<NowPlayingModel>() {
+        @Override
+        public NowPlayingModel createFromParcel(Parcel in) {
+            return new NowPlayingModel(in);
+        }
+
+        @Override
+        public NowPlayingModel[] newArray(int size) {
+            return new NowPlayingModel[size];
+        }
+    };
 
     public static NowPlayingModel objectFromData(String str) {
 
         return new Gson().fromJson(str, NowPlayingModel.class);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+
+    public Dates getDates() {
+        return dates;
+    }
+
+    public void setDates(Dates dates) {
+        this.dates = dates;
     }
 
     public int getPage() {
@@ -30,14 +65,6 @@ public class NowPlayingModel {
 
     public void setResults(List<Results> results) {
         this.results = results;
-    }
-
-    public Dates getDates() {
-        return dates;
-    }
-
-    public void setDates(Dates dates) {
-        this.dates = dates;
     }
 
     public int getTotal_pages() {
@@ -83,32 +110,24 @@ public class NowPlayingModel {
     }
 
     public static class Results {
-        private String poster_path;
         private boolean adult;
-        private String overview;
-        private String release_date;
+        private String backdrop_path;
         private List<Integer> genre_ids;
         private int id;
-        private String original_title;
         private String original_language;
-        private String title;
-        private String backdrop_path;
+        private String original_title;
+        private String overview;
         private double popularity;
-        private int vote_count;
+        private String poster_path;
+        private String release_date;
+        private String title;
         private boolean video;
         private double vote_average;
+        private int vote_count;
 
         public static Results objectFromData(String str) {
 
             return new Gson().fromJson(str, Results.class);
-        }
-
-        public String getPoster_path() {
-            return poster_path;
-        }
-
-        public void setPoster_path(String poster_path) {
-            this.poster_path = poster_path;
         }
 
         public boolean isAdult() {
@@ -119,20 +138,12 @@ public class NowPlayingModel {
             this.adult = adult;
         }
 
-        public String getOverview() {
-            return overview;
+        public String getBackdrop_path() {
+            return backdrop_path;
         }
 
-        public void setOverview(String overview) {
-            this.overview = overview;
-        }
-
-        public String getRelease_date() {
-            return release_date;
-        }
-
-        public void setRelease_date(String release_date) {
-            this.release_date = release_date;
+        public void setBackdrop_path(String backdrop_path) {
+            this.backdrop_path = backdrop_path;
         }
 
         public List<Integer> getGenre_ids() {
@@ -151,14 +162,6 @@ public class NowPlayingModel {
             this.id = id;
         }
 
-        public String getOriginal_title() {
-            return original_title;
-        }
-
-        public void setOriginal_title(String original_title) {
-            this.original_title = original_title;
-        }
-
         public String getOriginal_language() {
             return original_language;
         }
@@ -167,20 +170,20 @@ public class NowPlayingModel {
             this.original_language = original_language;
         }
 
-        public String getTitle() {
-            return title;
+        public String getOriginal_title() {
+            return original_title;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
+        public void setOriginal_title(String original_title) {
+            this.original_title = original_title;
         }
 
-        public String getBackdrop_path() {
-            return backdrop_path;
+        public String getOverview() {
+            return overview;
         }
 
-        public void setBackdrop_path(String backdrop_path) {
-            this.backdrop_path = backdrop_path;
+        public void setOverview(String overview) {
+            this.overview = overview;
         }
 
         public double getPopularity() {
@@ -191,12 +194,28 @@ public class NowPlayingModel {
             this.popularity = popularity;
         }
 
-        public int getVote_count() {
-            return vote_count;
+        public String getPoster_path() {
+            return poster_path;
         }
 
-        public void setVote_count(int vote_count) {
-            this.vote_count = vote_count;
+        public void setPoster_path(String poster_path) {
+            this.poster_path = poster_path;
+        }
+
+        public String getRelease_date() {
+            return release_date;
+        }
+
+        public void setRelease_date(String release_date) {
+            this.release_date = release_date;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public boolean isVideo() {
@@ -213,6 +232,14 @@ public class NowPlayingModel {
 
         public void setVote_average(double vote_average) {
             this.vote_average = vote_average;
+        }
+
+        public int getVote_count() {
+            return vote_count;
+        }
+
+        public void setVote_count(int vote_count) {
+            this.vote_count = vote_count;
         }
     }
 }

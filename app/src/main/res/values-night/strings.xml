@@ -18,4 +18,11 @@
     <string name="iv_back_movie_details">Back</string>
     <string name="tv_fragment_upcoming">Upcoming</string>
     <string name="tv_fragment_now_playing">Now Playing</string>
+    <string name="tv_title_fragment_movie_details">Mulan</string>
+    <string name="tv_year_fragment_movie_details">2020</string>
+    <string name="tv_runtime_fragment_movie_details">1h 1m</string>
+    <string name="tv_rating_fragment_movie_details">10/10</string>
+    <string name="tv_genre_fragment_movie_details">Adventure</string>
+    <string name="tv_synopsis_fragment_movie_details">Synopsis</string>
+    <string name="tv_production_companies_fragment_movie_details">Production Companies</string>
 </resources>

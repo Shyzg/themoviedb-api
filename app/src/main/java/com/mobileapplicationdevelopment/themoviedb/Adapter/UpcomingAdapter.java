@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
-import com.mobileapplicationdevelopment.themoviedb.Model.UpComing;
+import com.mobileapplicationdevelopment.themoviedb.Model.UpcomingModel;
 import com.mobileapplicationdevelopment.themoviedb.R;
 
 import java.text.ParseException;
@@ -21,33 +21,33 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
 
-public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardViewViewHolder> {
+public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.CardViewViewHolder> {
     private final Context context;
-    private List<UpComing.Results> listUpComing;
+    private List<UpcomingModel.Results> listUpComing;
 
-    private List<UpComing.Results> getListUpComing() {
+    private List<UpcomingModel.Results> getListUpComing() {
         return listUpComing;
     }
 
-    public void setListUpComing(List<UpComing.Results> listUpComing) {
+    public void setListUpComing(List<UpcomingModel.Results> listUpComing) {
         this.listUpComing = listUpComing;
     }
 
-    public UpComingAdapter(Context context) {
+    public UpcomingAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
 
-    public UpComingAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UpcomingAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_up_coming, parent, false);
-        return new UpComingAdapter.CardViewViewHolder(view);
+        return new UpcomingAdapter.CardViewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UpComingAdapter.CardViewViewHolder holder, int position) {
-        final UpComing.Results results = getListUpComing().get(position);
+    public void onBindViewHolder(@NonNull UpcomingAdapter.CardViewViewHolder holder, int position) {
+        final UpcomingModel.Results results = getListUpComing().get(position);
         StringBuilder genre = new StringBuilder();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

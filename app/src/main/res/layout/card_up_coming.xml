@@ -38,7 +38,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner" />
+                app:shapeAppearanceOverlay="@style/cornerPosterImageView" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_title_card_up_coming"
@@ -72,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_text_view_backround"
+                android:background="@drawable/background_text_view"
                 android:drawableStart="@drawable/rating_color"
                 android:drawablePadding="5dp"
                 android:drawingCacheQuality="high"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_text_view_backround"
+                android:background="@drawable/background_text_view"
                 android:fontFamily="@font/lato_bold"
                 android:padding="8dp"
                 android:text="@string/release_date_card_now_playing"

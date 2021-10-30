@@ -1,8 +1,9 @@
 package com.mobileapplicationdevelopment.themoviedb.Retrofit;
 
-import com.mobileapplicationdevelopment.themoviedb.Model.Movies;
+import com.mobileapplicationdevelopment.themoviedb.Model.CreditsModel;
+import com.mobileapplicationdevelopment.themoviedb.Model.MoviesModel;
 import com.mobileapplicationdevelopment.themoviedb.Model.NowPlayingModel;
-import com.mobileapplicationdevelopment.themoviedb.Model.UpComing;
+import com.mobileapplicationdevelopment.themoviedb.Model.UpcomingModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,7 +12,13 @@ import retrofit2.http.Query;
 
 public interface APIEndPoint {
     @GET("movie/{movie_id}")
-    Call<Movies> getMovieById(
+    Call<MoviesModel> getMovieById(
+            @Path("movie_id") String movieId,
+            @Query("api_key") String apiKey
+    );
+
+    @GET("movie/{movie_id}/credits")
+    Call<CreditsModel> getCredits(
             @Path("movie_id") String movieId,
             @Query("api_key") String apiKey
     );
@@ -22,7 +29,7 @@ public interface APIEndPoint {
     );
 
     @GET("movie/upcoming")
-    Call<UpComing> getUpComing(
+    Call<UpcomingModel> getUpComing(
             @Query("api_key") String apiKey
     );
 }

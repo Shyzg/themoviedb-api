@@ -52,25 +52,6 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-//        holder.cv.setOnClickListener(view -> {
-//            Intent intent = new Intent(context, MovieDetailsActivity.class);
-//
-//            intent.putExtra("movie_id", String.valueOf(results.getId()));
-//            intent.putExtra("title", results.getTitle());
-//            intent.putExtra("rating", String.valueOf(results.getVote_average()));
-//
-//            try {
-//                intent.putExtra("releasedate", formatter.format(Objects.requireNonNull(dateFormat.parse(results.getRelease_date()))));
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//
-//            context.startActivity(intent);
-//            Bundle bundle = new Bundle();
-//            bundle.putString("movie_id", String.valueOf(results.getId()));
-//            Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
-//        });
-
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.ivPoster);
 
         for (int i = 0; i < results.getGenre_ids().size(); i++) {

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ShapeAppearanceOverlay.App.Corner" parent="">
+
+    <style name="cornerBackdropImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="cornerPosterImageView" parent="">
+        <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
     </style>
 </resources>

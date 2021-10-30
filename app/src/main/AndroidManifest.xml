@@ -14,15 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar">
         <activity
-            android:name="com.mobileapplicationdevelopment.themoviedb.View.Activities.MovieDetailsActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.mobileapplicationdevelopment.themoviedb.View.Activities.NowPlayingActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.mobileapplicationdevelopment.themoviedb.View.Activities.MainActivity"
-            android:exported="true" />
-        <activity
             android:name="com.mobileapplicationdevelopment.themoviedb.View.MainMenuActivity"
             android:exported="true">
             <intent-filter>
@@ -31,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.mobileapplicationdevelopment.themoviedb.View.Activities.MainActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
