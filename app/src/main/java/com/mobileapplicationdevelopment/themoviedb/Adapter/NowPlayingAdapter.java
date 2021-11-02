@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
 import com.mobileapplicationdevelopment.themoviedb.Model.NowPlayingModel;
 import com.mobileapplicationdevelopment.themoviedb.R;
+import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,6 +51,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final NowPlayingModel.Results results = getListNowPlaying().get(position);
+//        final MoviesModel.
         StringBuilder genre = new StringBuilder();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

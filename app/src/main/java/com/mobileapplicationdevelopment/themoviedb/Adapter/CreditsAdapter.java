@@ -12,8 +12,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
 import com.mobileapplicationdevelopment.themoviedb.Model.CreditsModel;
 import com.mobileapplicationdevelopment.themoviedb.R;
@@ -40,15 +38,15 @@ public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.CardView
     @Override
     public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_credits, parent, false);
-        return new CardViewViewHolder(view);
+        return new CreditsAdapter.CardViewViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final CreditsModel.Cast cast = getCreditsList().get(position);
+        holder.tv_name.setText(cast.getCharacter());
         holder.tv_original_name.setText(cast.getOriginal_name());
-        holder.tv_character.setText(cast.getCharacter());
-        Glide.with(context).load(Const.IMG_URL + cast.getProfile_path()).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(holder.iv_profile);
+        Glide.with(context).load(Const.IMG_URL + cast.getProfile_path()).into(holder.iv_profile);
     }
 
     @Override
@@ -58,16 +56,15 @@ public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.CardView
 
     public static class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_profile;
-        TextView tv_original_name, tv_character;
+        TextView tv_name, tv_original_name;
         CardView cv_cast;
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-//            iv_profile = itemView.findViewById(R.id.cast_profile);
-//            tv_original_name = itemView.findViewById(R.id.originalname_cast);
-//            tv_character = itemView.findViewById(R.id.character_cast);
-//            cv_cast = itemView.findViewById(R.id.cv_cast);
-
+            iv_profile = itemView.findViewById(R.id.iv_cast_card_credits);
+            tv_name = itemView.findViewById(R.id.tv_name_card_credits);
+            tv_original_name = itemView.findViewById(R.id.tv_original_name_card_credits);
+            cv_cast = itemView.findViewById(R.id.cv_card_credits);
         }
     }
 }

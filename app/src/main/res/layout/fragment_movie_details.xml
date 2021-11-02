@@ -46,7 +46,7 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_poster_fragment_movie_details"
-                    android:layout_width="wrap_content"
+                    android:layout_width="128dp"
                     android:layout_height="192dp"
                     android:layout_marginStart="16dp"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_backdrop_fragment_movie_details"
@@ -54,6 +54,46 @@
                     app:layout_constraintTop_toBottomOf="@+id/iv_backdrop_fragment_movie_details"
                     app:shapeAppearanceOverlay="@style/cornerPosterImageView"
                     tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_linear_layout"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_poster_fragment_movie_details"
+                    app:layout_constraintTop_toTopOf="@+id/iv_poster_fragment_movie_details">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="32dp"
+                            android:layout_height="0dp"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_rating_fragment_movie_details"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_rating_fragment_movie_details"
+                            app:layout_constraintTop_toTopOf="@+id/tv_rating_fragment_movie_details"
+                            app:srcCompat="@drawable/stars" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_rating_fragment_movie_details"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            android:text="10"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_title_fragment_movie_details"
@@ -264,6 +304,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cl_first_fragment_movie_details"
                 tools:layout_editor_absoluteX="32dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_fourth_fragment_movie_details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_cast_fragment_movie_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingHorizontal="16dp"
+                    android:singleLine="true"
+                    android:text="@string/tv_cast_fragment_movie_details"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_cast_fragment_movie_details"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_cast_fragment_movie_details"
+                    app:layout_constraintStart_toStartOf="@+id/tv_cast_fragment_movie_details"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cast_fragment_movie_details"
+                    tools:listitem="@layout/card_credits" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>

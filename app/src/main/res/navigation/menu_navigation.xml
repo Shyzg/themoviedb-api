@@ -26,11 +26,11 @@
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.mobileapplicationdevelopment.themoviedb.View.Fragments.MovieDetailsFragment"
-        android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        android:label="Movie Details"
+        tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movie_id"
-            app:argType="string"
-            android:defaultValue="null" />
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
 </navigation>

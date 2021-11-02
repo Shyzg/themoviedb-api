@@ -25,4 +25,6 @@
     <string name="tv_genre_fragment_movie_details">Adventure</string>
     <string name="tv_synopsis_fragment_movie_details">Synopsis</string>
     <string name="tv_production_companies_fragment_movie_details">Production Companies</string>
+    <string name="tv_card_credits_name">Name</string>
+    <string name="tv_cast_fragment_movie_details">Cast</string>
 </resources>
