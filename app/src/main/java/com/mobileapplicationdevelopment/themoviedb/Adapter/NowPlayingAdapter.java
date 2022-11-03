@@ -1,23 +1,19 @@
 package com.mobileapplicationdevelopment.themoviedb.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.mobileapplicationdevelopment.themoviedb.Helper.Const;
 import com.mobileapplicationdevelopment.themoviedb.Model.NowPlayingModel;
 import com.mobileapplicationdevelopment.themoviedb.R;
-import com.mobileapplicationdevelopment.themoviedb.ViewModel.MovieViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,8 +49,8 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         final NowPlayingModel.Results results = getListNowPlaying().get(position);
 //        final MoviesModel.
         StringBuilder genre = new StringBuilder();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.ivPoster);
 

@@ -61,25 +61,12 @@ public class ItemClickSupport {
         return support;
     }
 
-    public static ItemClickSupport removeFrom(RecyclerView view) {
-        ItemClickSupport support = (ItemClickSupport) view.getTag(R.id.item_click_support);
-        if (support != null) {
-            support.detach(view);
-        }
-        return support;
-    }
-
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
     }
 
     public void setOnItemLongClickListener(OnItemLongClickListener listener) {
         mOnItemLongClickListener = listener;
-    }
-
-    private void detach(RecyclerView view) {
-        view.removeOnChildAttachStateChangeListener(mAttachListener);
-        view.setTag(R.id.item_click_support, null);
     }
 
     public interface OnItemClickListener {

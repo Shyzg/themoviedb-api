@@ -19,7 +19,7 @@ import com.mobileapplicationdevelopment.themoviedb.R;
 import java.util.List;
 
 public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.CardViewViewHolder> {
-    private Context context;
+    private final Context context;
     private List<CreditsModel.Cast> castList;
 
     private List<CreditsModel.Cast> getCreditsList() {
